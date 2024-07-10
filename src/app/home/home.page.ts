@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/standalone';
+import {Component} from '@angular/core';
+import {AlertController, IonContent, IonHeader, IonTitle, IonToolbar, ViewWillEnter} from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-home',
@@ -8,6 +8,16 @@ import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/stan
   standalone: true,
   imports: [IonHeader, IonToolbar, IonTitle, IonContent],
 })
-export class HomePage {
-  constructor() {}
+export class HomePage implements ViewWillEnter {
+  constructor(private alertController: AlertController) {
+  }
+
+  async ionViewWillEnter() {
+    const alert = await this.alertController.create({
+      htmlAttributes: {id: 'custom-id'},
+      message: 'This is an alert message that should have a custom ID.',
+    });
+    await alert.present();
+  }
+
 }
