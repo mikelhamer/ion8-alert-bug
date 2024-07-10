@@ -1,0 +1,7 @@
+{
+  "name": "ion8-alert-bug",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
